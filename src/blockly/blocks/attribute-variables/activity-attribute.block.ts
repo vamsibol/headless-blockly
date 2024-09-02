@@ -1,5 +1,5 @@
 import * as Blockly from "blockly/core";
-const initializeActivityBlock = () => {
+const initializeActivityAttributeBlock = () => {
   Blockly.Blocks["activity_attribute"] = {
     init: function () {
       // var attributes = BlockDefinitionsService.getAttributesTuple("activity");
@@ -26,4 +26,4 @@ const initializeActivityBlock = () => {
   };
 };
 
-export { initializeActivityBlock };
+export { initializeActivityAttributeBlock };
