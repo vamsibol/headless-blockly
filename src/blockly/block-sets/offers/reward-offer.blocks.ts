@@ -28,8 +28,30 @@
  *  - product_attribute
  *  - payment_attribute
  *  - airport_attribute
-**/
+ **/
 
-const REWARD_OFFER_BLOCKS = [];
+import * as Blockly from "blockly";
+import { initializeOfferGenericBlock } from "../../blocks";
+import { OfferGenericBlockGenerator } from "../../drl-generators/offer-generic.drl";
 
-export { REWARD_OFFER_BLOCKS };
+export class RewardOfferBlocks {
+  drlGenerator: Blockly.CodeGenerator;
+  readonly REWARD_OFFER_BLOCKS: any = {
+    offer_generic: {
+      initializer: initializeOfferGenericBlock,
+      generator: OfferGenericBlockGenerator,
+    },
+  };
+  constructor() {
+    this.drlGenerator = new Blockly.Generator("DRL");
+    this.initializeRewardOfferBlocks();
+  }
+
+  initializeRewardOfferBlocks() {
+    Object.keys(this.REWARD_OFFER_BLOCKS).forEach((block) => {
+      this.REWARD_OFFER_BLOCKS[block].initializer();
+      this.drlGenerator.forBlock[block] =
+        this.REWARD_OFFER_BLOCKS[block].generator;
+    });
+  }
+}

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { offerRoutes } from "../offers";
+import { offerRoutes } from "../domains/offers";
 
 const appRoutes = Router();
 
