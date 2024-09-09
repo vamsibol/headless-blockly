@@ -12,8 +12,8 @@ const initializeActivityBlock = () => {
       this.setPreviousStatement(true, "Activity");
       this.setNextStatement(true, "Activity");
       this.setColour("#405f97");
-      this.block.setTooltip("");
-      this.block.setHelpUrl("");
+      this.setTooltip("");
+      this.setHelpUrl("");
     },
   };
 };
