@@ -1,12 +1,17 @@
 import * as Blockly from "blockly/core";
-const initializeActivityCriteriaBlock = () => {
+import { BlocklyDataHelper } from "../../blockly-helpers";
+export const initializeActivityCriteriaBlock = (
+  blocklyDataHelper: BlocklyDataHelper
+) => {
   Blockly.Blocks["activity_criteria"] = {
     init: function () {
-      // var lhs_dropdown = new Blockly.FieldDropdown(BlockDefinitionsService.activity_filter_objects, function(option) {
-      //     this.sourceBlock_.updateShapeByObject_(option);
-      // });
-
-      let filterDropdownValues: any[] = [];
+      const filterDropdownValues = new Blockly.FieldDropdown(
+        blocklyDataHelper.activity_filter_objects,
+        (option) => {
+          this.updateShapeByObject_(option);
+          return option;
+        }
+      );
 
       this.appendDummyInput()
         .appendField("Filter")
@@ -20,5 +25,3 @@ const initializeActivityCriteriaBlock = () => {
     },
   };
 };
-
-export { initializeActivityCriteriaBlock };

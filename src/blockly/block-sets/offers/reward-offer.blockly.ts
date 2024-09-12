@@ -76,7 +76,7 @@ export class RewardOfferBlockly {
     },
     activity_criteria: {
       initializer: initializeActivityCriteriaBlock,
-      generator: () => {
+      generator: ()=>() => {
         return "activity_criteria";
       },
     },
