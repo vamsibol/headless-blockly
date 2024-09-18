@@ -1,5 +1,6 @@
 import * as Blockly from "blockly/core";
-const initializeStaticValueBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeStaticValueBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["static_value"] = {
     init: function () {
       this.appendDummyInput().appendField(

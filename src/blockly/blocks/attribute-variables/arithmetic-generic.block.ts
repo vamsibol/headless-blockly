@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeArithmeticGenericBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeArithmeticGenericBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["arithmetic_generic"] = {
     init: function () {
       const arithmeticOperators: Blockly.MenuOption[] = [];

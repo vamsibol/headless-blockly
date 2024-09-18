@@ -1,6 +1,7 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializePaymentRuleBlock = () => {
+const initializePaymentRuleBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["payment_rule"] = {
     init: function () {
       this.appendDummyInput()

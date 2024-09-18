@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializePaymentAttributeBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializePaymentAttributeBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["payment_attribute"] = {
     init: function () {
       // var payment_attr = BlockDefinitionsService.getAttributesTuple('payment_method');

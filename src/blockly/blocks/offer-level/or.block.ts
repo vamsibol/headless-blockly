@@ -1,5 +1,6 @@
 import * as Blockly from "blockly/core";
-const initializeORBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeORBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["or"] = {
     init: function () {
       this.appendDummyInput().appendField("OR");

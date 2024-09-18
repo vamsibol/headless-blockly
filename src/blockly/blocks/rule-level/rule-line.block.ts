@@ -1,6 +1,7 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeRuleLineBlock = () => {
+const initializeRuleLineBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["rule_line"] = {
     init: function () {
       this.appendDummyInput()

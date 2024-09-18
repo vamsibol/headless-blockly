@@ -1,6 +1,7 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeActivityBlock = () => {
+const initializeActivityBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["activity"] = {
     init: function () {
       this.appendDummyInput().appendField("On Activity");

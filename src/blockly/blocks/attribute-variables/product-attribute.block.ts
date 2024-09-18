@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeProductAttributeBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeProductAttributeBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["product_attribute"] = {
     init: function () {
       const attributes: Blockly.MenuOption[] = [];

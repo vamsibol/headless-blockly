@@ -1,6 +1,7 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeEventBlock = () => {
+const initializeEventBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["event"] = {
     init: function () {
       this.appendDummyInput().appendField("On Event");

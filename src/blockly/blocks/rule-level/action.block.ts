@@ -1,6 +1,8 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeActionBlock = (offerType: string) => {
+const initializeActionBlock = (blocklyDataHelper: BlocklyDataService) => {
+  let offerType = "reward";
   Blockly.Blocks["action"] = {
     init: function () {
       let PROPERTIES: any[] = [

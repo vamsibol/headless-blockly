@@ -1,6 +1,7 @@
 import * as Blockly from "blockly";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeOfferGenericBlock = () => {
+const initializeOfferGenericBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["offer_generic"] = {
     init: function () {
       this.appendDummyInput().appendField("Offer");

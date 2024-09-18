@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeCurrencyConverterBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeCurrencyConverterBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["currency_converter"] = {
     init: function () {
       //   var dropdown = new Blockly.FieldDropdown(BlockDefinitionsService.currency_converter_attributes_read, function(option) {

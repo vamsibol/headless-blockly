@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeAirportAttributeBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeAirportAttributeBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["airport_attribute"] = {
     init: function () {
       // var airportpair_attr = BlockDefinitionsService.airport_pair_type;

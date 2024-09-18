@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeActivityAttributeBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeActivityAttributeBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["activity_attribute"] = {
     init: function () {
       // var attributes = BlockDefinitionsService.getAttributesTuple("activity");

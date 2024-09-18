@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { OfferDataAccessor } from "../../data-accessors/offer.data-accessor";
 import { RewardOfferBlockly } from "../../blockly/block-sets/offers/reward-offer.blockly";
+import { BlocklyDataService } from "../../blockly/blockly-services";
 const generateDRL = async (req: Request, res: Response) => {
   const { offerId } = req.params;
   const offerDataAccessor = new OfferDataAccessor();
@@ -16,12 +17,20 @@ const generateDRL = async (req: Request, res: Response) => {
       throw new Error("Rules are not configured for this offer.");
     }
 
-    const rewardOfferBlockly = new RewardOfferBlockly(offerData);
+    // Initialize BlocklyDataHelper
+    const blocklyDataHelper = new BlocklyDataService();
+    await blocklyDataHelper.initialize();
+
+    const rewardOfferBlockly = new RewardOfferBlockly(
+      blocklyDataHelper,
+      offerData
+    );
+
     const drl = rewardOfferBlockly.getDRL(offerDRLRes.xml);
     rewardOfferBlockly.clearWorkspace();
     return res.json({ drl });
   } catch (error: any) {
-    return res.status(500).json({
+    return res.status(400).json({
       message: error.message ?? "Internal Server Error.",
       error: JSON.stringify(error),
     });

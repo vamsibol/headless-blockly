@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeMemberAttributeBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeMemberAttributeBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["member_attribute"] = {
     init: function () {
       // let options= angular.copy(BlockDefinitionsService.member_attribute_types_read);

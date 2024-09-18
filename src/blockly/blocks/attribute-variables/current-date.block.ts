@@ -1,5 +1,6 @@
 import * as Blockly from "blockly/core";
-const initializeCurrentDateBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeCurrentDateBlock = (  blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["current_date_block"] = {
     init: function () {
       // var dropdown = new Blockly.FieldDropdown(BlockDefinitionsService.datetime_operators, function(option) {

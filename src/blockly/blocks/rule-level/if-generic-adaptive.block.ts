@@ -1,6 +1,9 @@
 import * as Blockly from "blockly/core";
+import { BlocklyDataService } from "../../blockly-services";
 
-const initializeIfGenericAdaptiveBlock = () => {
+const initializeIfGenericAdaptiveBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["if_generic_adaptive"] = {
     init: function () {
       // if(angular.isDefined($scope.tierClassData)){

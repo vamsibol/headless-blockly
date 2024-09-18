@@ -1,5 +1,6 @@
 import * as Blockly from "blockly/core";
-const initializeStaticDateBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeStaticDateBlock = (blocklyDataHelper: BlocklyDataService) => {
   Blockly.Blocks["static_date"] = {
     init: function () {
       const textField = new Blockly.FieldTextInput();

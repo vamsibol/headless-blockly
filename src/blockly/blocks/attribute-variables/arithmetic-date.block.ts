@@ -1,5 +1,8 @@
 import * as Blockly from "blockly/core";
-const initializeArithmeticDateBlock = () => {
+import { BlocklyDataService } from "../../blockly-services";
+const initializeArithmeticDateBlock = (
+  blocklyDataHelper: BlocklyDataService
+) => {
   Blockly.Blocks["arithmetic_date"] = {
     init: function () {
       const operators: Blockly.MenuOption[] = [];
