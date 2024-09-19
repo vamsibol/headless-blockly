@@ -358,7 +358,7 @@ export const ActivityCriteriaBlockGenerator =
     } else if (dropdownOperator === "in") {
       if (attributeDataType == "NUMBER") {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -377,7 +377,7 @@ export const ActivityCriteriaBlockGenerator =
         if (rhs_value && rhs_value != "") {
           // (existInListN(readAttributeN("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -392,7 +392,7 @@ export const ActivityCriteriaBlockGenerator =
         } else {
           // (existInListN(readAttributeN("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -407,7 +407,7 @@ export const ActivityCriteriaBlockGenerator =
         attributeDataType == "DATETIME"
       ) {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -421,7 +421,7 @@ export const ActivityCriteriaBlockGenerator =
         }
         // existInListD(DateUtils.getDate(readAttributeS("h_bit_date")), "${bit_date_allow_multiple_variable}") NEW DRL for blueprint in notin allow multiple variable
         if (
-          window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+          extraData.isBluePrintOffer &&
           block.getFieldValue("blueprinttypes") != null &&
           allowMultipleBlueprintvar
         ) {
@@ -452,7 +452,7 @@ export const ActivityCriteriaBlockGenerator =
         code = "(" + code_in + ")";
       } else {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -487,7 +487,7 @@ export const ActivityCriteriaBlockGenerator =
         } else if (rhs_value && rhs_value != "") {
           // (existInListS(readAttributeS("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -503,7 +503,7 @@ export const ActivityCriteriaBlockGenerator =
         } else {
           // (existInListS(readAttributeS("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -518,7 +518,7 @@ export const ActivityCriteriaBlockGenerator =
     } else if (dropdownOperator === "not_in") {
       if (attributeDataType == "NUMBER") {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -553,7 +553,7 @@ export const ActivityCriteriaBlockGenerator =
         } else {
           // (existInListN(readAttributeN("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -569,7 +569,7 @@ export const ActivityCriteriaBlockGenerator =
         attributeDataType == "DATETIME"
       ) {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -583,7 +583,7 @@ export const ActivityCriteriaBlockGenerator =
         }
         // existInListD(DateUtils.getDate(readAttributeS("h_bit_date")), "${bit_date_allow_multiple_variable}") NEW DRL for blueprint in notin allow multiple variable
         if (
-          window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+          extraData.isBluePrintOffer &&
           block.getFieldValue("blueprinttypes") != null &&
           allowMultipleBlueprintvar
         ) {
@@ -614,7 +614,7 @@ export const ActivityCriteriaBlockGenerator =
         code = "(" + code_in + ")";
       } else {
         rhs = block.getFieldValue("value");
-        if (window.location.href.indexOf("offerblueprintrules/") !== -1) {
+        if (extraData.isBluePrintOffer) {
           if (block.getFieldValue("blueprinttypes")) {
             rhs = "${" + rhs + "}";
           }
@@ -649,7 +649,7 @@ export const ActivityCriteriaBlockGenerator =
         } else if (rhs_value && rhs_value != "") {
           // (!existInListS(readAttributeS("h_bit_type"), "${bit_type_lookup}")) NEW DRL for blueprint in notin allow multiple variable
           if (
-            window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+            extraData.isBluePrintOffer &&
             block.getFieldValue("blueprinttypes") != null &&
             allowMultipleBlueprintvar
           ) {
@@ -767,7 +767,7 @@ export const ActivityCriteriaBlockGenerator =
       rhs = generator.valueToCode(block, "RHS_INPUT", 0);
 
       if (
-        window.location.href.indexOf("offerblueprintrules/") !== -1 &&
+        extraData.isBluePrintOffer &&
         generator.valueToCode(block, "RHS_INPUT", 0)
       ) {
         // rhs = rhs.slice(0,1) + '"' + rhs.slice(1,rhs.length-1) + '"' + rhs.slice(rhs.length-1);
