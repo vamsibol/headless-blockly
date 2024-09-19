@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import { OfferDataAccessor } from "../../data-accessors/offer.data-accessor";
 import { RewardOfferBlockly } from "../../blockly/block-sets/offers/reward-offer.blockly";
-import { BlocklyDataService } from "../../blockly/blockly-services";
+import {
+  BlocklyDataService,
+  BlocklyHttpService,
+} from "../../blockly/blockly-services";
 const generateDRL = async (req: Request, res: Response) => {
   const { offerId } = req.params;
   const offerDataAccessor = new OfferDataAccessor();
@@ -18,7 +21,8 @@ const generateDRL = async (req: Request, res: Response) => {
     }
 
     // Initialize BlocklyDataHelper
-    const blocklyDataHelper = new BlocklyDataService();
+    const blocklyHttpService = new BlocklyHttpService();
+    const blocklyDataHelper = new BlocklyDataService(blocklyHttpService);
     await blocklyDataHelper.initialize();
 
     const rewardOfferBlockly = new RewardOfferBlockly(

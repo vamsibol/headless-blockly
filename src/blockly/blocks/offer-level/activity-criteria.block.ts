@@ -68,6 +68,7 @@ export const initializeActivityCriteriaBlock = (
             fieldOptions = [...fieldOptions, ...[]];
             break;
           case "airport":
+            fieldName = "ATTRIBUTE_TYPE_INPUT";
             fieldOptions = [...fieldOptions, ...[]];
             break;
           case "location":
@@ -77,11 +78,14 @@ export const initializeActivityCriteriaBlock = (
             fieldOptions = [...fieldOptions, ...[]];
             break;
           case "sponsor":
-            fieldOptions = [...fieldOptions, ...[]];
+            fieldOptions = [
+              ...fieldOptions,
+              ...blocklyDataHelper.sponsorAttributes,
+            ];
             break;
         }
 
-        const sponsorAttributeDropdown = new Blockly.FieldDropdown(
+        const attributeDropdown = new Blockly.FieldDropdown(
           fieldOptions,
           (option: string) => {
             this.updateShapeByAttribute(atrributeType, option);
@@ -89,7 +93,7 @@ export const initializeActivityCriteriaBlock = (
           }
         );
         this.appendDummyInput(fieldName).appendField(
-          sponsorAttributeDropdown,
+          attributeDropdown,
           "attribute"
         );
       }
@@ -97,6 +101,63 @@ export const initializeActivityCriteriaBlock = (
     updateShapeByAttribute: function (
       attributeType: string,
       attribute: string
-    ) {},
+    ) {
+      if (
+        attribute == null ||
+        attributeType == null ||
+        attributeType == "" ||
+        attribute == ""
+      ) {
+        return;
+      }
+      const attributeData =
+        blocklyDataHelper.customAttributeStore[attributeType][attribute];
+      let operators: Blockly.MenuOption[] = blocklyDataHelper.textTypeOperators;
+      // switch (attributeData?.data_type) {
+      //   default:
+      //     break;
+      // }
+
+      this.appendDummyInput("OPERATOR_INPUT").appendField(
+        new Blockly.FieldDropdown(operators, (option: any) => {
+          this.updateShapeByOperator(
+            attributeType,
+            attribute,
+            option,
+            attributeData.data_type
+          );
+          return option;
+        }),
+        "operators"
+      );
+    },
+    updateShapeByOperator: function (
+      attributeType: string,
+      attribute: string,
+      operator: string,
+      dataType: string
+    ) {
+      if (
+        attribute == null ||
+        attributeType == null ||
+        attributeType == "" ||
+        attribute == "" ||
+        operator == null ||
+        operator == "" ||
+        dataType == null ||
+        dataType == ""
+      ) {
+        return;
+      }
+
+      // Handle Based on Operator and Data Type
+      switch (operator) {
+        default:
+          this.appendDummyInput("RHS_INPUT").appendField(
+            new Blockly.FieldTextInput("value"),
+            "value"
+          );
+      }
+    },
   };
 };
