@@ -5,6 +5,7 @@ import {
   BlocklyDataService,
   BlocklyHttpService,
 } from "../../blockly/blockly-services";
+import { encodeBS64 } from "../../helpers";
 const generateDRL = async (req: Request, res: Response) => {
   const { offerId } = req.params;
   const offerDataAccessor = new OfferDataAccessor();
@@ -32,7 +33,11 @@ const generateDRL = async (req: Request, res: Response) => {
 
     const drl = rewardOfferBlockly.getDRL(offerDRLRes.xml);
     rewardOfferBlockly.clearWorkspace();
-    return res.json({ drl });
+    const json = rewardOfferBlockly.getJSON(offerDRLRes.xml);
+    rewardOfferBlockly.clearWorkspace();
+    console.log(drl);
+
+    return res.json({ drl: encodeBS64(drl), json: encodeBS64(json) });
   } catch (error: any) {
     return res.status(400).json({
       message: error.message ?? "Internal Server Error.",

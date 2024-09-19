@@ -256,6 +256,19 @@ export class RewardOfferBlockly {
     return code;
   }
 
+  public getJSON(xml: string): string {
+    // Decode XML
+    const decodedXML = decodeBS64(xml);
+
+    // Inject XML
+    const xmlElement = Blockly.utils.xml.textToDom(decodedXML);
+    Blockly.Xml.domToWorkspace(xmlElement, this.workspace);
+    const json = Blockly.serialization.workspaces.save(this.workspace);
+
+    // return encodeBS64(code);
+    return JSON.stringify(json);
+  }
+
   public clearWorkspace() {
     this.workspace.clear();
   }
