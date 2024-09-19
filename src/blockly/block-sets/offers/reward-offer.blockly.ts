@@ -218,6 +218,16 @@ export class RewardOfferBlockly {
     // Create Blockly Workspace
     this.workspace = new Blockly.Workspace();
     this.drlGenerator = new Blockly.Generator("DRL");
+
+    this.drlGenerator.scrub_ = (block, code, thisOnly) => {
+      const nextBlock =
+        block.nextConnection && block.nextConnection.targetBlock();
+      if (nextBlock && !thisOnly) {
+        return code + "\n" + this.drlGenerator.blockToCode(nextBlock);
+      }
+      return code;
+    };
+
     this.extraData.offer = offerData;
     this.extraData.blocklyDataService = blocklyDataService;
     this.initializeRewardOfferBlocks();
