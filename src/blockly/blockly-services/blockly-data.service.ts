@@ -27,7 +27,11 @@ export class BlocklyDataService {
   ];
 
   // { sponsor: any }
-  customAttributeStore: any = { sponsor: {} };
+  customAttributeStore: any = { sponsor: {}, activity: {} };
+
+  getAttributeList(level: string) {
+    return Object.values(this.customAttributeStore[level]);
+  }
 
   // Custom attributes Menu Options
   sponsorAttributes: Blockly.MenuOption[] = [];

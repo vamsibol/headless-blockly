@@ -62,6 +62,7 @@ import { OfferGenericBlockGenerator } from "../../drl-generators/offer-generic.d
 import { decodeBS64, encodeBS64 } from "../../../helpers";
 import { ActivityBlockGenerator } from "../../drl-generators/activity.drl";
 import { BlocklyDataService } from "../../blockly-services";
+import { ActivityCriteriaBlockGenerator } from "../../drl-generators";
 
 export class RewardOfferBlockly {
   private drlGenerator: Blockly.CodeGenerator;
@@ -77,9 +78,7 @@ export class RewardOfferBlockly {
     },
     activity_criteria: {
       initializer: initializeActivityCriteriaBlock,
-      generator: () => () => {
-        return "activity_criteria";
-      },
+      generator: ActivityCriteriaBlockGenerator,
     },
     event: {
       initializer: initializeEventBlock,
@@ -220,6 +219,7 @@ export class RewardOfferBlockly {
     this.workspace = new Blockly.Workspace();
     this.drlGenerator = new Blockly.Generator("DRL");
     this.extraData.offer = offerData;
+    this.extraData.blocklyDataService = blocklyDataService;
     this.initializeRewardOfferBlocks();
   }
 
