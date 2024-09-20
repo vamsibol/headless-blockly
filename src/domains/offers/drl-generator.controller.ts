@@ -9,9 +9,11 @@ import { encodeBS64 } from "../../helpers";
 const generateDRL = async (req: Request, res: Response) => {
   const { offerId } = req.params;
   const offerDataAccessor = new OfferDataAccessor();
-  // Get Offer Details
+
   try {
+    // Get Offer Details
     const { data: offerData } = await offerDataAccessor.getOfferById(offerId);
+
     const {
       data: [offerDRLRes],
     } = await offerDataAccessor.getOfferDrlById(offerId);
@@ -24,6 +26,7 @@ const generateDRL = async (req: Request, res: Response) => {
     // Initialize BlocklyDataHelper
     const blocklyHttpService = new BlocklyHttpService();
     const blocklyDataHelper = new BlocklyDataService(blocklyHttpService);
+
     await blocklyDataHelper.initialize();
 
     const rewardOfferBlockly = new RewardOfferBlockly(
@@ -32,10 +35,10 @@ const generateDRL = async (req: Request, res: Response) => {
     );
 
     const drl = rewardOfferBlockly.getDRL(offerDRLRes.xml);
+
     rewardOfferBlockly.clearWorkspace();
     const json = rewardOfferBlockly.getJSON(offerDRLRes.xml);
     rewardOfferBlockly.clearWorkspace();
-    console.log(drl);
 
     return res.json({ drl: encodeBS64(drl), json: encodeBS64(json) });
   } catch (error: any) {

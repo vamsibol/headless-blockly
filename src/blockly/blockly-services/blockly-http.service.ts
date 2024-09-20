@@ -4,8 +4,7 @@ import { AttributeDataAccessor } from "../../data-accessors/attribute.data-acces
 export class BlocklyHttpService {
   attributeDataAccessor: AttributeDataAccessor;
   constructor() {
-    const token = EnvironmentHelper.getEnvVariable("JWT_TOKEN");
-    this.attributeDataAccessor = new AttributeDataAccessor(token);
+    this.attributeDataAccessor = new AttributeDataAccessor();
   }
 
   fetchSponsorAttributes() {
