@@ -6,8 +6,11 @@ export const ActivityBlockGenerator = (extraData: any) => {
     let activity_filters = generator
       ?.statementToCode(block, "ACTIVITY_CRITERIA")
       .trim();
-    var multi_sponsorids = "";
+
+
+    let multi_sponsorids = "";
     if (activity_filters.length > 0) {
+      activity_filters = activity_filters.replace(/\n/g, " &&");
       if (activity_filters.lastIndexOf(" &&") + 3 == activity_filters.length) {
         activity_filters = activity_filters.slice(
           0,

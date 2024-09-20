@@ -59,7 +59,7 @@ import {
   initializeStaticValueBlock,
 } from "../../blocks";
 import { OfferGenericBlockGenerator } from "../../drl-generators/offer-generic.drl";
-import { decodeBS64, encodeBS64 } from "../../../helpers";
+import { decodeBS64 } from "../../../helpers";
 import { ActivityBlockGenerator } from "../../drl-generators/activity.drl";
 import { BlocklyDataService } from "../../blockly-services";
 import { ActivityCriteriaBlockGenerator } from "../../drl-generators";

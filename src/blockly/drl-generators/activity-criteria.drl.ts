@@ -19,27 +19,27 @@ export const ActivityCriteriaBlockGenerator =
       code_in = "",
       code_p = "",
       rhs1,
-      payment_array: any = [],
-      LHSDataType = "",
-      RHSDataType = "";
+      payment_array: any = [];
     const offerId = extraData.offer.id;
     const attributeData =
       extraData.blocklyDataService.customAttributeStore[object]?.[attribute];
     const attributeDataType =
-      attribute_level === "MR_S" ? attributeData.data_type : "NUMBER";
-    const is_line = attributeData?.line_level ?? false;
+      attribute_level !== "MR_S" ? attributeData.data_type : "NUMBER";
     const airportsType = block.getFieldValue("airporttypes");
 
     let dropdownOperator = block.getFieldValue("operators");
     const paymentDropdownOperator = block.getFieldValue("payment_operators");
 
     const allowMultiple = attributeData?.allow_multiple ?? false;
-    let allowMultipleBlueprintvar =
+    const allowMultipleBlueprintvar =
       extraData.isBluePrintOffer &&
       block.getFieldValue("blueprinttypes") != null &&
       block.getFieldValue("value") != null;
-
-    if (
+    if (dropdownOperator == "") {
+      throw new Error(
+        lhs + " Operator is not selected in Activity Criteria Block"
+      );
+    } else if (
       dropdownOperator === "null" &&
       attribute_level !== "MA_CA" &&
       attribute_level !== "MA_CC"
@@ -77,10 +77,6 @@ export const ActivityCriteriaBlockGenerator =
           ") && "
         );
       }
-    } else if (dropdownOperator == "") {
-      throw new Error(
-        lhs + " Operator is not selected in Activity Criteria Block"
-      );
     }
 
     // Based on the attributeType -> sponsor, activity,...

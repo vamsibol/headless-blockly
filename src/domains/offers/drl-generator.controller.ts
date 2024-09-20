@@ -39,7 +39,7 @@ const generateDRL = async (req: Request, res: Response) => {
     rewardOfferBlockly.clearWorkspace();
     const json = rewardOfferBlockly.getJSON(offerDRLRes.xml);
     rewardOfferBlockly.clearWorkspace();
-
+    console.log("DRL", drl);
     return res.json({ drl: encodeBS64(drl), json: encodeBS64(json) });
   } catch (error: any) {
     return res.status(400).json({
