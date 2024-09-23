@@ -113,10 +113,10 @@ export const initializeActivityCriteriaBlock = (
       const attributeData =
         blocklyDataHelper.customAttributeStore[attributeType][attribute];
       let operators: Blockly.MenuOption[] = blocklyDataHelper.textTypeOperators;
-      // switch (attributeData?.data_type) {
-      //   default:
-      //     break;
-      // }
+      switch (attributeData?.data_type) {
+        default:
+          break;
+      }
 
       this.appendDummyInput("OPERATOR_INPUT").appendField(
         new Blockly.FieldDropdown(operators, (option: any) => {
@@ -152,11 +152,20 @@ export const initializeActivityCriteriaBlock = (
 
       // Handle Based on Operator and Data Type
       switch (operator) {
+        case "in":
+        case "not_in":
+          break;
+        case "between":
+          this.appendValueInput("RHS_INPUT").appendField("from");
+          this.appendValueInput("RHS_VALUE").appendField("to");
+          break;
         default:
-          this.appendDummyInput("RHS_INPUT").appendField(
-            new Blockly.FieldTextInput("value"),
-            "value"
-          );
+          if (dataType === "TEXT" || operator == "contains") {
+            this.appendDummyInput("RHS_INPUT").appendField(
+              new Blockly.FieldTextInput("value"),
+              "value"
+            );
+          }
       }
     },
   };
